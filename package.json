@@ -1,0 +1,8 @@
+{
+  "name": "victoria-at-25",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'Building static site...'",
+    "start": "node server.cjs"
+  }
+}
