@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victoria at 25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --near-black: #111111;
+    --gold: #C9A96E;
+    --gold-light: #E2C99A;
+    --blush: #E8B4B8;
+    --blush-dark: #C9878D;
+    --cream: #F5F0EB;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-muted: #666;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ══════════════════════════════════
+     SECTION 1: HERO
+  ══════════════════════════════════ */
+  #hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      #1a0f0f 0%,
+      #0d0d18 40%,
+      #0a0a0a 100%
+    );
+  }
+
+  /* Decorative orb */
+  .hero-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-orb 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-orb {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  }
+
+  /* Subtle pattern overlay */
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--gold) 0px,
+      var(--gold) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+  }
+
+  .hero-photo-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Placeholder for hero photo */
+  .hero-photo-placeholder {
+    width: 340px;
+    height: 480px;
+    border-radius: 2px;
+    background: linear-gradient(160deg, #2a1f1f 0%, #1a1428 100%);
+    border: 1px solid rgba(201,169,110,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0.5;
+  }
+
+  .hero-photo-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+    stroke: var(--gold);
+    fill: none;
+  }
+
+  .hero-photo-placeholder span {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  /* Vignette overlay */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,0.8) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fade-up 1s ease 0.5s forwards;
+    margin-bottom: 28px;
+  }
+
+  .hero-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(120px, 22vw, 220px);
+    font-weight: 300;
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.4);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fade-up 1.2s ease 0.8s forwards;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .hero-lines {
+    opacity: 0;
+    animation: fade-up 1s ease 1.4s forwards;
+  }
+
+  .hero-lines p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 2.2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,235,0.75);
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-lines .gold-accent { color: var(--gold-light); }
+
+  .hero-begin-btn {
+    margin-top: 48px;
+    display: inline-block;
+    opacity: 0;
+    animation: fade-up 1s ease 2.2s forwards;
+  }
+
+  .begin-btn {
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.5);
+    color: var(--gold-light);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+  }
+
+  .begin-btn:hover {
+    background: rgba(201,169,110,0.1);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    opacity: 0;
+    animation: fade-in 1s ease 3s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-drop 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scroll-drop {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ══════════════════════════════════
+     SECTION 2: A FEW WORDS
+  ══════════════════════════════════ */
+  #words {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px;
+    background: #080808;
+  }
+
+  .words-inner {
+    max-width: 640px;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: block;
+  }
+
+  .words-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(245,240,235,0.85);
+    font-style: italic;
+  }
+
+  .words-text .name-highlight {
+    color: var(--gold-light);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .words-text .sign-off {
+    display: block;
+    margin-top: 32px;
+    font-style: normal;
+    font-size: 0.85em;
+    color: var(--blush);
+    letter-spacing: 0.05em;
+  }
+
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 48px auto 0;
+  }
+
+  /* ══════════════════════════════════
+     SECTION 3: WHO YOU ARE
+  ══════════════════════════════════ */
+  #who {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px;
+    background: #0a0a0a;
+    overflow: hidden;
+  }
+
+  .who-inner {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .who-items {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .who-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .who-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .who-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    display: block;
+  }
+
+  .who-word.gold { color: var(--gold-light); }
+  .who-word.blush { color: var(--blush); }
+
+  .who-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,240,235,0.45);
+    display: block;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════════
+     SECTION 4: PHOTO GALLERY
+  ══════════════════════════════════ */
+  #gallery {
+    padding: 100px 24px;
+    background: #080808;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+  }
+
+  .gallery-grid {
+    columns: 3;
+    column-gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) { .gallery-grid { columns: 2; } }
+  @media (max-width: 480px) { .gallery-grid { columns: 1; } }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-placeholder {
+    width: 100%;
+    background: linear-gradient(160deg, #1a1520 0%, #0f1018 100%);
+    border: 1px solid rgba(201,169,110,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.4s ease;
+    position: relative;
+  }
+
+  .gallery-placeholder svg {
+    opacity: 0.2;
+    stroke: var(--gold);
+    fill: none;
+  }
+
+  .gallery-placeholder span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(201,169,110,0.3);
+    text-transform: uppercase;
+  }
+
+  .gallery-item:hover .gallery-placeholder {
+    transform: scale(1.02);
+  }
+
+  .gallery-hover-note {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .gallery-item:hover .gallery-hover-note { opacity: 1; }
+
+  .gallery-hover-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Gallery items with varying heights */
+  .g1 { height: 320px; }
+  .g2 { height: 240px; }
+  .g3 { height: 400px; }
+  .g4 { height: 280px; }
+  .g5 { height: 360px; }
+  .g6 { height: 220px; }
+  .g7 { height: 300px; }
+  .g8 { height: 260px; }
+  .g9 { height: 350px; }
+
+  .gallery-note {
+    text-align: center;
+    margin-top: 48px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(201,169,110,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ══════════════════════════════════
+     SECTION 5: 25 THINGS
+  ══════════════════════════════════ */
+  #things {
+    padding: 100px 24px;
+    background: #0a0a0a;
+  }
+
+  .things-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .things-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4.5vw, 46px);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .things-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245,240,235,0.4);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #111;
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .card:hover, .card.open {
+    background: #1a1410;
+    border-color: rgba(201,169,110,0.3);
+  }
+
+  .card:hover::before, .card.open::before { opacity: 1; }
+
+  .card-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    color: rgba(201,169,110,0.4);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0;
+    transition: margin 0.3s ease;
+  }
+
+  .card-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(201,169,110,0.7);
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin 0.3s ease;
+    margin-top: 0;
+  }
+
+  .card.open .card-body {
+    max-height: 200px;
+    margin-top: 10px;
+  }
+
+  .card.open .card-title { margin-bottom: 4px; }
+
+  /* Last card special */
+  .card.card-last {
+    background: linear-gradient(160deg, #1a0f0f 0%, #110d18 100%);
+    border-color: rgba(232,180,184,0.2);
+    grid-column: span 1;
+  }
+
+  .card.card-last .card-title { color: var(--blush); }
+  .card.card-last::before {
+    background: linear-gradient(to right, transparent, var(--blush), transparent);
+  }
+
+  /* ══════════════════════════════════
+     SECTION 6: TWENTY-FIVE
+  ══════════════════════════════════ */
+  #twentyfive {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px;
+    background: #060606;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tf-bg-number {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35vw;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tf-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .tf-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tf-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 36px);
+    font-weight: 300;
+    color: rgba(245,240,235,0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  .tf-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tf-line strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .tf-line.final {
+    font-size: clamp(28px, 5vw, 52px);
+    color: var(--cream);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════
+     SECTION 7: THE SONG
+  ══════════════════════════════════ */
+  #song {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px;
+    background: #080808;
+  }
+
+  .song-card {
+    max-width: 560px;
+    width: 100%;
+    background: #111;
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 56px 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .song-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .song-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 28px;
+    background: linear-gradient(160deg, #1a1520 0%, #0f1018 100%);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .song-icon::after {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.1);
+    animation: spin-slow 8s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .song-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--gold);
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .song-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 21px);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,240,235,0.75);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .song-message span {
+    display: block;
+    margin-top: 10px;
+    color: var(--gold-light);
+  }
+
+  .song-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .song-btn {
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--gold-light);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .song-btn:hover {
+    background: rgba(201,169,110,0.1);
+    border-color: var(--gold);
+  }
+
+  .song-btn.primary {
+    background: rgba(201,169,110,0.15);
+    border-color: rgba(201,169,110,0.5);
+  }
+
+  /* ══════════════════════════════════
+     SECTION 8: FINAL MESSAGE
+  ══════════════════════════════════ */
+  #final-msg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px;
+    background: #0a0a0a;
+  }
+
+  .final-msg-inner {
+    max-width: 600px;
+    text-align: center;
+  }
+
+  .final-msg-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,235,0.8);
+    line-height: 2;
+  }
+
+  .final-msg-text .highlight { color: var(--blush); font-style: normal; font-weight: 400; }
+
+  .final-msg-heart {
+    display: block;
+    font-size: 32px;
+    margin-top: 32px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* ══════════════════════════════════
+     FINAL SCREEN
+  ══════════════════════════════════ */
+  #finale {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .finale-inner { max-width: 640px; }
+
+  .finale-line1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.8vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,235,0.5);
+    line-height: 1.8;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .finale-accent {
+    font-size: clamp(10px, 1.2vw, 13px);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    transition: opacity 1.5s ease 0.8s;
+    display: block;
+    margin: 32px 0;
+  }
+
+  .finale-line2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 68px);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transition: opacity 2s ease 1.8s;
+    line-height: 1.1;
+  }
+
+  .finale-inner.revealed .finale-line1,
+  .finale-inner.revealed .finale-accent,
+  .finale-inner.revealed .finale-line2 { opacity: 1; }
+
+  /* ══════════════════════════════════
+     UTILITY
+  ══════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ SECTION 1: HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-pattern"></div>
+
+  <!-- Photo frame (add <img> here when photo is available) -->
+  <div class="hero-photo-frame">
+    <div class="hero-photo-placeholder">
+      <svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Add her photo here</span>
+    </div>
+  </div>
+
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Victoria at</span>
+    <span class="hero-number">25</span>
+    <div class="hero-lines">
+      <p>A quarter century of grace.</p>
+      <p>A thousand moments.</p>
+      <p class="gold-accent">One incredible woman.</p>
+    </div>
+    <div class="hero-begin-btn">
+      <a href="#words" class="begin-btn">Begin</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2: A FEW WORDS ═══ -->
+<section id="words">
+  <div class="words-inner">
+    <span class="section-label reveal">A letter</span>
+    <div class="words-text reveal">
+      <span class="name-highlight">Victoria,</span>
+      <br><br>
+      Today isn't just about celebrating another year.
+      <br><br>
+      It's about celebrating every prayer answered, every challenge overcome, every lesson learned, and every smile shared.
+      <br><br>
+      You've grown into a woman whose kindness, strength, faith, and determination continue to inspire everyone around her.
+      <br><br>
+      This little corner of the internet exists for one reason:
+      <br><br>
+      To celebrate you.
+      <span class="sign-off">Happy 25th Birthday. ❤️</span>
+    </div>
+    <div class="gold-divider reveal"></div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 3: WHO YOU ARE ═══ -->
+<section id="who">
+  <div class="who-inner">
+    <span class="section-label reveal">Who you are</span>
+    <div class="who-items">
+      <div class="who-item">
+        <span class="who-word">Strong.</span>
+        <span class="who-sub">Even when you don't feel it.</span>
+      </div>
+      <div class="who-item">
+        <span class="who-word gold">Kind.</span>
+        <span class="who-sub">Even when nobody is watching.</span>
+      </div>
+      <div class="who-item">
+        <span class="who-word">Resilient.</span>
+        <span class="who-sub">Especially when life gets difficult.</span>
+      </div>
+      <div class="who-item">
+        <span class="who-word blush">Faithful.</span>
+        <span class="who-sub">Because God has always been faithful to you.</span>
+      </div>
+      <div class="who-item">
+        <span class="who-word" style="font-style:italic; font-size: clamp(36px, 6vw, 68px);">Unapologetically Victoria.</span>
+        <span class="who-sub">And that's my favourite part.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 4: GALLERY ═══ -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <span class="section-label">Moments</span>
+    <h2 class="gallery-title">A few favourites.</h2>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><div class="gallery-placeholder g1"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>One of my favorites.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g2"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>That smile.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g3"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>Beautiful, as always.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g4"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>You looked so happy here.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g5"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>Main character energy.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g6"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>Never stop smiling.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g7"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>My absolute favourite.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g8"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>Effortlessly you.</p></div></div>
+    <div class="gallery-item reveal"><div class="gallery-placeholder g9"><svg viewBox="0 0 24 24" width="32" height="32" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo</span></div><div class="gallery-hover-note"><p>This one makes me smile.</p></div></div>
+  </div>
+
+  <p class="gallery-note reveal">Replace placeholders with her photos — hover each one to reveal a note.</p>
+</section>
+
+<!-- ═══ SECTION 5: 25 THINGS ═══ -->
+<section id="things">
+  <div class="things-header reveal">
+    <span class="section-label">Reasons</span>
+    <h2 class="things-title">25 things I love about you.</h2>
+    <p class="things-sub">Tap each card to open it.</p>
+  </div>
+
+  <div class="cards-grid">
+    <!-- Cards 1–24 -->
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">01</span><span class="card-title">Your Strength</span><div class="card-body">You never quit. Even when it's hard — especially when it's hard.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">02</span><span class="card-title">Your Heart</span><div class="card-body">You care deeply, even when you pretend not to.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">03</span><span class="card-title">Your Faith</span><div class="card-body">You keep believing, even when it's hard to see the way forward.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">04</span><span class="card-title">Your Determination</span><div class="card-body">Once you've decided, that's it. Nothing moves you.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">05</span><span class="card-title">Your Smile</span><div class="card-body">It lights up every room. It always has.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">06</span><span class="card-title">Your Laugh</span><div class="card-body">Genuine. Unfiltered. Contagious in the best way.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">07</span><span class="card-title">Your Kindness</span><div class="card-body">You give without counting the cost. Always.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">08</span><span class="card-title">Your Loyalty</span><div class="card-body">The people you love know they are loved. No question.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">09</span><span class="card-title">Your Growth</span><div class="card-body">Who you are today — compared to who you were — is remarkable.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">10</span><span class="card-title">Your Resilience</span><div class="card-body">You've been through things that would have broken others. You didn't break.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">11</span><span class="card-title">Your Wisdom</span><div class="card-body">You understand things that people twice your age haven't figured out.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">12</span><span class="card-title">Your Honesty</span><div class="card-body">You say what you mean and mean what you say.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">13</span><span class="card-title">Your Courage</span><div class="card-body">You show up even when you're afraid. That's real bravery.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">14</span><span class="card-title">Your Grace</span><div class="card-body">The way you carry yourself. Always with dignity.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">15</span><span class="card-title">Your Empathy</span><div class="card-body">You feel what others feel. That's a rare and beautiful gift.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">16</span><span class="card-title">Your Creativity</span><div class="card-body">The way you see the world is different. Better.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">17</span><span class="card-title">Your Drive</span><div class="card-body">You don't just dream. You go after things.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">18</span><span class="card-title">Your Patience</span><div class="card-body">You wait for things to align. That's maturity.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">19</span><span class="card-title">Your Presence</span><div class="card-body">When you walk into a room, it changes. Always for the better.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">20</span><span class="card-title">Your Prayers</span><div class="card-body">I've seen what your prayers do. They work.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">21</span><span class="card-title">Your Potential</span><div class="card-body">The best is still ahead. I genuinely believe that.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">22</span><span class="card-title">Your Voice</span><div class="card-body">What you say matters. More than you know.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">23</span><span class="card-title">Your Story</span><div class="card-body">Every chapter has led to this. And the next one is the best yet.</div></div>
+    <div class="card reveal" onclick="toggleCard(this)"><span class="card-number">24</span><span class="card-title">Your Future</span><div class="card-body">Wherever you're headed — it's going to be extraordinary.</div></div>
+    <!-- Card 25: special -->
+    <div class="card card-last reveal" onclick="toggleCard(this)"><span class="card-number">25</span><span class="card-title">You</span><div class="card-body">All of the above. And everything in between. My favourite reason.</div></div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 6: TWENTY-FIVE ═══ -->
+<section id="twentyfive">
+  <div class="tf-bg-number">25</div>
+  <div class="tf-inner">
+    <span class="section-label reveal">Twenty-Five</span>
+    <div class="tf-lines">
+      <div class="tf-line"><strong>25</strong> years of laughter.</div>
+      <div class="tf-line"><strong>25</strong> years of growth.</div>
+      <div class="tf-line"><strong>25</strong> years of lessons.</div>
+      <div class="tf-line"><strong>25</strong> years of faith.</div>
+      <div class="tf-line"><strong>25</strong> years of becoming.</div>
+      <div class="tf-line final">25 years of Victoria.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 7: THE SONG ═══ -->
+<section id="song">
+  <div class="song-card reveal">
+    <div class="song-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    </div>
+    <p class="song-message">
+      I wanted to give you something that would last longer than flowers.
+      <span>So I gave you a song.</span>
+    </p>
+    <div class="song-buttons">
+      <button class="song-btn primary">▶ Play</button>
+      <button class="song-btn">Lyrics</button>
+    </div>
+    <!-- Add your embedded player here, e.g. Spotify, Apple Music, SoundCloud embed -->
+    <div style="margin-top: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: rgba(201,169,110,0.3); letter-spacing: 0.1em;">
+      Add your song embed below this line
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 8: FINAL MESSAGE ═══ -->
+<section id="final-msg">
+  <div class="final-msg-inner">
+    <span class="section-label reveal">For you</span>
+    <div class="final-msg-text reveal">
+      Victoria,
+      <br><br>
+      If I could give you one thing today, it would be the ability to see yourself through the eyes of the people who love you.
+      <br><br>
+      You would see how <span class="highlight">remarkable</span> you are.
+      <br><br>
+      How <span class="highlight">loved</span> you are.
+      <br><br>
+      How much <span class="highlight">light</span> you bring into the lives of others.
+      <br><br>
+      Thank you for being you.
+      <br><br>
+      Happy 25th Birthday.
+      <span class="final-msg-heart">❤️</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINALE ═══ -->
+<section id="finale">
+  <div class="finale-inner">
+    <p class="finale-line1">
+      Twenty-Five Chapters.
+      <br>
+      And Heaven's Still Writing.
+    </p>
+    <span class="finale-accent">Victoria · 25</span>
+    <h2 class="finale-line2">Happy Birthday<br>Victoria.</h2>
+  </div>
+</section>
+
+<script>
+  // ── Intersection Observer for scroll reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .who-item, .tf-line').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ── Stagger tf-lines
+  const tfLines = document.querySelectorAll('.tf-line');
+  const tfObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tfLines.forEach((line, i) => {
+          setTimeout(() => line.classList.add('visible'), i * 200);
+        });
+        tfObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  if (tfLines.length) tfObserver.observe(document.querySelector('#twentyfive'));
+
+  // ── Stagger who-items
+  const whoItems = document.querySelectorAll('.who-item');
+  const whoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        whoItems.forEach((item, i) => {
+          setTimeout(() => item.classList.add('visible'), i * 180);
+        });
+        whoObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  if (whoItems.length) whoObserver.observe(document.querySelector('#who'));
+
+  // ── Finale reveal
+  const finaleInner = document.querySelector('.finale-inner');
+  const finaleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => finaleInner.classList.add('revealed'), 400);
+        finaleObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  if (finaleInner) finaleObserver.observe(finaleInner);
+
+  // ── Card toggle
+  function toggleCard(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
+  // ── Begin button smooth scroll
+  document.querySelector('.begin-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#words').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ── Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal, .who-item, .tf-line').forEach(el => {
+      el.style.transition = 'none';
+      el.classList.add('visible');
+    });
+  }
+</script>
+</body>
+</html>
